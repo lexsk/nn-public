@@ -24,7 +24,13 @@ class App extends React.Component {
 
     render() {
         return (
-            <h2 className='test-ccs-class'>11Привет123!</h2>
+            <div>
+                <p>Click <a href="/hello">here</a> to see a greeting.</p>
+                <h2 className='test-ccs-class'>11Привет123!</h2>
+                <form action="/logout" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </div>
         )
     }
 }
