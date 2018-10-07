@@ -1,6 +1,8 @@
 'use strict';
 
 import $ from "jquery";
+import {beforeSendAjax} from "./common/lib";
+import {HOST} from "./common/const";
 
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -13,6 +15,7 @@ class App extends React.Component {
             type: 'POST',
             url: 'test',
             data: 'test_id=123',
+            beforeSend: beforeSendAjax,
             success: function (response) {
                 console.log(response);
             },
@@ -22,13 +25,24 @@ class App extends React.Component {
         });
     }
 
+    logout() {
+        $.ajax({
+            type: 'POST',
+            url: 'logout',
+            beforeSend: beforeSendAjax,
+            success: function () {
+                window.location = 'http://' + HOST + '/login?logout';
+            }
+        });
+    };
+
     render() {
         return (
             <div>
                 <h2 className='test-ccs-class'>Привет {getLogin()}!</h2>
-                <form action="/logout" method="post">
-                    <input type="submit" value="Sign Out"/>
-                </form>
+
+                <input type="submit" value="Sign Out" onClick={this.logout}/>
+
             </div>
         )
     }
