@@ -16,16 +16,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
-                .antMatchers("/login").permitAll()
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/login", "/logout", "/built/**", "/main.css").permitAll()
                 .anyRequest().authenticated()
                 .and()
-            .formLogin()
+                .formLogin()
+                .defaultSuccessUrl("/", true)
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
-            .logout()
+                .httpBasic()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login")
                 .permitAll();
     }
 
@@ -33,11 +37,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public UserDetailsService userDetailsService() {
         UserDetails user =
-             User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("password")
-                .roles("USER")
-                .build();
+                User.withDefaultPasswordEncoder()
+                        .username("1")
+                        .password("1")
+                        .roles("USER")
+                        .build();
 
         return new InMemoryUserDetailsManager(user);
     }
