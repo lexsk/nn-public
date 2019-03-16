@@ -14,8 +14,8 @@
     <artifactId>nn-public</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>nn-client</name>
-    <description>nn-client description</description>
+    <name>nn-public</name>
+    <description>nn-public description</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
