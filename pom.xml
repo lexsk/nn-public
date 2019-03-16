@@ -108,9 +108,6 @@
                         <goals>
                             <goal>webpack</goal>
                         </goals>
-                        <configuration>
-                            <arguments>webpack-dev-server --hot</arguments>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

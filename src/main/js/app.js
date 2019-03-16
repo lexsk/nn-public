@@ -3,7 +3,6 @@
 import $ from "jquery";
 import {beforeSendAjax} from "./common/lib";
 import {HOST} from "./common/const";
-import {hot} from 'react-hot-loader/root'
 
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -49,7 +48,5 @@ class App extends React.Component {
     }
 }
 
-const App1 = new App();
-
-ReactDOM.render(hot(App1), document.getElementById('react'));
+ReactDOM.render(<App/>, document.getElementById('react'));
 
